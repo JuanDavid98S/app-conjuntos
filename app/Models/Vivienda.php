@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Vivienda extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function conjunto(){
+        return belongsTo(Conjunto::class);
+    }
 }

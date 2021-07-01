@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Solicitar_espacio extends Model
+class Solicitud_espacio extends Model
 {
     use HasFactory;
 

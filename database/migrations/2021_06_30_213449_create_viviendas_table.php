@@ -19,10 +19,10 @@ class CreateViviendasTable extends Migration
             $table->bigInteger('id_usuario')->unsigned();
             $table->foreign('id_conjunto')->references('id')->on('conjuntos');
             $table->foreign('id_usuario')->references('id')->on('usuarios');
-            $table->integer('estado');
-            $table->double('precio_venta');
-            $table->double('precio_alquiler');
-            $table->string('tipo');
+            $table->string('estado')->comment('Alquilada, En venta, Vendida, Libre');
+            $table->double('precio_venta')->nullable();
+            $table->double('precio_alquiler')->nullable();
+            $table->string('tipo')->comment('Revisar de qué hablábamos');
             $table->timestamps();
         });
     }

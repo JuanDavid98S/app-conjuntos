@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory;
 
@@ -33,6 +34,17 @@ class Usuario extends Model
 
     public function transacciones(){
         return hasMany(Transaccion::class);
+    }
+
+    //mutator, función que se ejecuta antes de guardar un registro
+    public function setContraseniaAttribute($contrasenia)
+    {
+        $this->attributes['contrasenia'] = bcrypt($contrasenia);
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->contrasenia;
     }
     
 }

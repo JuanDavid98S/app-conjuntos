@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SesionController;
+use App\Http\Controllers\PqrController;
+use App\Http\Controllers\ViviendaController;
+
 
 
 /*
@@ -20,8 +23,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('registrarse', [RegistroController::class, 'crear'])->middleware('guest');
-Route::post('registrarse', [RegistroController::class, 'almacenar'])->middleware('guest');
-Route::get('iniciarSesion', [SesionController::class, 'iniciarSesion'])->middleware('guest');
-Route::post('iniciarSesion', [SesionController::class, 'inicio'])->middleware('guest');
+
+Route::prefix('pqr')->middleware(['auth'])->group(function() {
+    Route::get('lista', [PqrController::class, 'index']);
+    Route::get('crear', [PqrController::class, 'crear']);
+    Route::post('crear', [PqrController::class, 'almacenar']);
+});
+
+Route::prefix('viviendas')->middleware(['guest'])->group(function() {
+    Route::get('index', [ViviendaController::class, 'index']);
+    Route::get('detalle/{vivienda:id}', [ViviendaController::class, 'verVivienda']);
+});
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('registrarse', [RegistroController::class, 'crear']);
+    Route::post('registrarse', [RegistroController::class, 'almacenar']);
+    Route::get('iniciarSesion', [SesionController::class, 'iniciarSesion']);
+    Route::post('iniciarSesion', [SesionController::class, 'inicio']);
+});
+
 Route::post('cerrarSesion', [SesionController::class, 'destruir'])->middleware('auth');
+
+
+
+

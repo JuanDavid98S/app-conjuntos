@@ -10,30 +10,31 @@ class Usuario extends Authenticatable
 {
     use HasFactory;
 
+    protected $table = 'usuarios';
     protected $guarded = [];
 
     public function comentarios(){
-        return hasMany(Comentario::class);
+        return $this->hasMany(Comentario::class, 'id_usuario');
     }
 
     public function viviendas(){
-        return hasMany(Vivienda::class);
+        return $this->hasMany(Vivienda::class, 'id_usuario');
     }
 
     public function pqrs(){
-        return hasMany(Pqr::class);
+        return $this->hasMany(Pqr::class, 'id_usuario');
     }
 
     public function solicitar_espacios(){
-        return hasMany(Solicitar_espacio::class);
+        return $this->hasMany(Solicitar_espacio::class, 'id_usuario');
     }
 
     public function solicitudes(){
-        return hasMany(Solicitud::class);
+        return $this->hasMany(Solicitud::class, 'id_usuario');
     }
 
     public function transacciones(){
-        return hasMany(Transaccion::class);
+        return $this->hasMany(Transaccion::class, 'id_usuario');
     }
 
     //mutator, función que se ejecuta antes de guardar un registro

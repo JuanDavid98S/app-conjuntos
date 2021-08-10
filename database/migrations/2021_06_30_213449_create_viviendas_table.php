@@ -16,7 +16,7 @@ class CreateViviendasTable extends Migration
         Schema::create('viviendas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_conjunto')->unsigned();
-            $table->bigInteger('id_usuario')->unsigned();
+            $table->bigInteger('id_usuario')->unsigned()->nullable();
             $table->foreign('id_conjunto')->references('id')->on('conjuntos');
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->string('estado')->comment('Alquilada, En venta, Vendida, Libre');

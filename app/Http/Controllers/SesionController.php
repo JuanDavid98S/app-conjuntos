@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
+use  App\Models\Usuario;
 
 class SesionController extends Controller
 {
@@ -25,8 +27,12 @@ class SesionController extends Controller
             'contrasenia' => ['required']
         ]);
 
-        if(auth()->attempt($atributos))
+        $usuario = Usuario::where('correo', request()->correo)->first();
+
+        if(Hash::check(request()->contrasenia, $usuario->contrasenia)){
+            auth()->login($usuario);
             return redirect('/')->with('inicioSesion', 'Ha iniciado sesión');
+        }
         
         return back()
         ->withInput()

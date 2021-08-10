@@ -19,7 +19,7 @@ class CreatePqrsTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->string('estado')->comment('Revisado, Pendiente');
             $table->text('descripcion')->comment('Descripción de la inconformidad que lleva a la creación de PQR');
-            $table->string('evidencia')->comment('Documento, fotografía o archivo que soporta el PQR');
+            $table->string('evidencia')->nullable()->comment('Documento, fotografía o archivo que soporta el PQR');
             $table->timestamps();
         });
     }

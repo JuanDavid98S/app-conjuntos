@@ -20,8 +20,9 @@ class CreateSolicitudEspaciosTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->foreign('id_espacio')->references('id')->on('espacios');
             $table->string('estado');
-            $table->date('fecha');
-            $table->time('hora');
+            $table->date('fecha_inicio');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->integer('numero_personas');
             $table->timestamps();
         });

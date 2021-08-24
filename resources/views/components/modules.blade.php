@@ -36,6 +36,17 @@
                 <a href="#" class="stretched-link">Ingresar</a>
             </div>
           </div>
+          <div class="card bg-light">
+            <div class="card-body">
+              <h4 class="card-title text-center">Reservar espacios</h4>
+              <p class="card-text text-justify">En este módulo podrás reservar áreas comunes de la propiedad
+                para eventos especiales que quieras celebrar con tu familia, amigos o colegas.
+              </p>
+            </div>
+            <div class="card-footer">
+                <a href="espacios/index" class="stretched-link">Ingresar</a>
+            </div>
+          </div>
     </div>
 </div>
 

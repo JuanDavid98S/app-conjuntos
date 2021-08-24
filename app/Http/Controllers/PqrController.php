@@ -28,7 +28,7 @@ class PqrController extends Controller
             'descripcion' => 'required',
         ]);
 
-        $usuario = Usuario::find(Auth::user()->id)->with('pqrs')->first();
+        $usuario = Usuario::where('id', '=', Auth::user()->id)->with('pqrs')->first();
         $usuario->pqrs()->create([
             'id_usuario' => Auth::user()->id,
             'estado' => 'Pendiente',

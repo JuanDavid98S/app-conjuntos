@@ -11,7 +11,7 @@ class Espacio extends Model
 
     protected $guarded = [];
 
-    public function solicitar_espacios(){
-        return hasMany(Solicitar_espacio::class);
+    public function solicitarEspacio(){
+        return $this->hasMany(Solicitud_espacio::class, 'id_espacio');
     }
 }

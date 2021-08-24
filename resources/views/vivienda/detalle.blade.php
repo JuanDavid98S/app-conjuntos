@@ -13,7 +13,6 @@
                       <div class="col-sm-6 col-md-6 text-center"><p class="card-text font-weight-bold text-primary">Precio de venta:</p> <p class="card-text font-weight-bold">{{ $vivienda->precio_venta }}</p></div>
                       <div class="col-sm-6 col-md-6 text-center"><p class="card-text font-weight-bold text-primary">Precio de alquiler mensual: </p> <p class="card-text font-weight-bold">{{ $vivienda->precio_venta }}</div>
                       <div class="col-sm-6 col-md-6 text-center"><p class="card-text font-weight-bold text-primary">Tipo de vivienda:</p> <p class="card-text font-weight-bold"> {{ $vivienda->tipo }}</p></div>
-
                   </div>
                 </div>
             </div>

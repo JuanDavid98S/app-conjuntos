@@ -5,8 +5,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\PqrController;
 use App\Http\Controllers\ViviendaController;
-
-
+use App\Http\Controllers\EspacioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +32,12 @@ Route::prefix('pqr')->middleware(['auth'])->group(function() {
 Route::prefix('viviendas')->middleware(['guest'])->group(function() {
     Route::get('index', [ViviendaController::class, 'index']);
     Route::get('detalle/{vivienda:id}', [ViviendaController::class, 'verVivienda']);
+});
+
+Route::prefix('espacios')->middleware(['auth'])->group(function() {
+    Route::get('index', [EspacioController::class, 'index']);
+    Route::get('reserva/{espacio:id}', [EspacioController::class, 'reservar']);
+    Route::post('reserva/{espacio:id}/crear', [EspacioController::class, 'almacenar']);
 });
 
 Route::middleware(['guest'])->group(function () {

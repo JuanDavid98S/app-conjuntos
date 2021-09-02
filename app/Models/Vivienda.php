@@ -12,6 +12,10 @@ class Vivienda extends Model
     protected $guarded = [];
 
     public function conjunto(){
-        return belongsTo(Conjunto::class);
+        return $this->belongsTo(Conjunto::class, 'id_conjunto');
+    }
+
+    public function inventario(){
+        return $this->hasMany(Inventario_vivienda::class, 'id_vivienda');
     }
 }

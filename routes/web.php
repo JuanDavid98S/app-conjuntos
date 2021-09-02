@@ -6,6 +6,9 @@ use App\Http\Controllers\SesionController;
 use App\Http\Controllers\PqrController;
 use App\Http\Controllers\ViviendaController;
 use App\Http\Controllers\EspacioController;
+use App\Http\Controllers\ForoController;
+use App\Http\Controllers\SolicitudesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +32,24 @@ Route::prefix('pqr')->middleware(['auth'])->group(function() {
     Route::post('crear', [PqrController::class, 'almacenar']);
 });
 
+Route::prefix('foro')->middleware(['auth'])->group(function() {
+    Route::get('index', [ForoController::class, 'index']);
+    Route::get('comentarios/{tema:id}', [ForoController::class, 'verTema']);
+    Route::post('comentarios/{tema:id}/nuevo', [ForoController::class, 'almacenar']);
+});
+
 Route::prefix('viviendas')->middleware(['guest'])->group(function() {
     Route::get('index', [ViviendaController::class, 'index']);
     Route::get('detalle/{vivienda:id}', [ViviendaController::class, 'verVivienda']);
+});
+
+Route::prefix('solicitudes')->middleware(['auth'])->group(function() {
+    Route::get('index', [SolicitudesController::class, 'index']);
+    Route::get('reparaciones', [SolicitudesController::class, 'indexReparaciones']);
+    Route::get('reparacion/{inventario_vivienda:id}', [SolicitudesController::class, 'agendarReparacion']);
+    Route::post('reparacion/{inventario_vivienda:id}', [SolicitudesController::class, 'crearReparacion']);
+    Route::get('tema/nuevo', [SolicitudesController::class, 'indexTemas']);
+    Route::post('tema/crear', [SolicitudesController::class, 'crearTema']);
 });
 
 Route::prefix('espacios')->middleware(['auth'])->group(function() {

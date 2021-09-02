@@ -9,9 +9,11 @@ class Solicitud extends Model
 {
     use HasFactory;
 
+    protected $table = 'solicitudes';
     protected $guarded = [];
+    public $timestamps = false;
 
     public function usuario(){
-        return belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class, 'id_usuario');
     }
 }

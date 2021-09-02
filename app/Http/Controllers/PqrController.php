@@ -11,7 +11,7 @@ class PqrController extends Controller
 {
     public function index()
     {
-        $usuario = Usuario::find(Auth::user()->id)->with('pqrs')->first();
+        $usuario = Usuario::where('id', '=', Auth::user()->id)->with('pqrs')->first();
         $pqrs = $usuario->pqrs;
 
         return view('pqr.inicio')->with('pqrs', $pqrs);

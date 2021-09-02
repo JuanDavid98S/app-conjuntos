@@ -18,7 +18,7 @@ class CreateInventarioViviendaTable extends Migration
             $table->bigInteger('id_vivienda')->unsigned();
             $table->foreign('id_vivienda')->references('id')->on('viviendas');
             $table->string('producto');
-            $table->string('estado')->comment('Descipción del estado del bien (funcional, con fallas, no funciona)');
+            $table->string('estado')->comment('Descipción del estado del bien (Funcional, Dañado)');
             $table->timestamps();
         });
     }

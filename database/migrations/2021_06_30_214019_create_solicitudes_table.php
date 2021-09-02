@@ -19,8 +19,10 @@ class CreateSolicitudesTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->string('tipo_solicitud')->comment('Reparación general, Proposición de tema');
             $table->string('estado')->comment('Resuelta, Pendiente');
+            $table->string('producto')->nullable();
+            $table->string('tema')->nullable();
+            $table->string('descripcion')->nullable();
             $table->date('fecha_solicitud');
-            $table->timestamps();
         });
     }
 

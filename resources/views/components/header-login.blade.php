@@ -7,7 +7,10 @@
       <ul class="navbar-nav">
         @auth
           <li class="nav-item">
-            <span class="nav-link float-right">Bienvenido</a>
+            <a class="nav-link float-right">Bienvenido</a>
+          </li> 
+          <li class="nav-item">
+            <a href="/usuario/perfil" class="nav-link float-right">Ver mi perfil</a>
           </li> 
           <li class="nav-item">
             <form action="/cerrarSesion" method="POST">

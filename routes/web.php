@@ -8,6 +8,7 @@ use App\Http\Controllers\ViviendaController;
 use App\Http\Controllers\EspacioController;
 use App\Http\Controllers\ForoController;
 use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\UsuarioController;
 
 
 /*
@@ -50,6 +51,11 @@ Route::prefix('solicitudes')->middleware(['auth'])->group(function() {
     Route::post('reparacion/{inventario_vivienda:id}', [SolicitudesController::class, 'crearReparacion']);
     Route::get('tema/nuevo', [SolicitudesController::class, 'indexTemas']);
     Route::post('tema/crear', [SolicitudesController::class, 'crearTema']);
+});
+
+Route::prefix('usuario')->middleware(['auth'])->group(function() {
+    Route::get('perfil', [UsuarioController::class, 'verPerfil']);
+    Route::get('solicitudes', [UsuarioController::class, 'verSolicitudes']);
 });
 
 Route::prefix('espacios')->middleware(['auth'])->group(function() {

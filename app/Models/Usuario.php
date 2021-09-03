@@ -26,7 +26,7 @@ class Usuario extends Authenticatable
     }
 
     public function solicitar_espacios(){
-        return $this->hasMany(Solicitar_espacio::class, 'id_usuario');
+        return $this->hasMany(Solicitud_espacio::class, 'id_usuario');
     }
 
     public function solicitudes(){
